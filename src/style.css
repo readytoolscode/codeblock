@@ -1,0 +1,103 @@
+:root {
+    --cb-radius: 12px;
+    --cb-pad: 16px;
+    --cb-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --cb-font-size: 14px;
+    --cb-line-height: 1.55;
+}
+
+.rt-cb {
+    border-radius: var(--cb-radius);
+    overflow: hidden;
+    border: 1px solid var(--cb-border);
+    background: var(--cb-bg);
+    color: var(--cb-fg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.rt-cb__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cb-header-bg);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--cb-border);
+}
+
+.rt-cb__filename {
+    font-size: 12px;
+    color: var(--cb-subtle);
+    user-select: text;
+}
+
+.rt-cb__toolbar {
+    display: flex;
+    gap: 6px;
+}
+
+.rt-cb__btn {
+    appearance: none;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--cb-subtle);
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .15s ease;
+}
+.rt-cb__btn:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--cb-fg);
+}
+.rt-cb__btn:focus-visible {
+    outline: 2px solid var(--cb-accent);
+    outline-offset: 2px;
+}
+
+.rt-cb__pre {
+    margin: 0;
+    padding: var(--cb-pad);
+    font-family: var(--cb-font);
+    font-size: var(--cb-font-size);
+    line-height: var(--cb-line-height);
+    overflow-x: auto;
+    white-space: pre;
+    position: relative;
+}
+
+.rt-cb__pre.wrap { /* wrap=true */
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Code grid for line numbers */
+.rt-cb--ln .rt-cb__grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+}
+
+.rt-cb__gutter {
+    user-select: none;
+    color: var(--cb-subtle);
+    text-align: right;
+    opacity: .7;
+}
+
+.rt-cb__line {
+    display: block;
+}
+
+.rt-cb__line--hl {
+    background: var(--cb-highlight);
+    margin: 0 calc(var(--cb-pad) * -1);
+    padding: 0 var(--cb-pad);
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+    :root { --cb-font-size: 13px; }
+    .rt-cb__filename { font-size: 11px; }
+    .rt-cb__btn { font-size: 11px; padding: 6px 8px; }
+}
